@@ -1,0 +1,34 @@
+.even{
+    flex: 1 0 0;
+}
+
+.odd{
+    flex: 3 0 0;
+}
+
+.coaster, .row {
+    display: flex;
+}
+
+.row{}
+.coaster{
+    flex-direction: column;
+    height: 100rem;
+    width:100rem
+}
+
+.space{
+    background-color: gainsboro;
+}
+
+.notWall{
+    background-color: gray;
+}
+
+.wall{
+    background-color: rgb(255, 76, 106);
+}
+
+.dummy{
+    visibility: hidden;
+}
