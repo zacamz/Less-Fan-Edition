@@ -3,7 +3,7 @@
 }
 
 .odd{
-    flex: 3 0 0;
+    flex: 10 0 0;
 }
 
 .coaster, .row {
@@ -13,8 +13,8 @@
 .row{}
 .coaster{
     flex-direction: column;
-    height: 100rem;
-    width:100rem
+    height: 30rem;
+    width:30rem
 }
 
 .space{

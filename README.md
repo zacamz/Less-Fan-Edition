@@ -38,7 +38,7 @@ D,U,D,U,D
 U,S,U,S,U
 D,U,D,W,D
 U,S,W,S,U
-D,U,D,U,D 
+D,U,D,U,D
 
             X3
 D,U,D,U,D   
