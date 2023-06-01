@@ -92,6 +92,28 @@ let buildCoaster = function (coaster) {
 
 }
 
+function rotateCoaster(coaster) {
+
+    let newcoaster = []
+
+    for (let _ of coaster) {
+        newcoaster.push(Array(coaster.length))
+    }
+
+    for (i = 0; i < coaster.length; i += 1) {
+
+        for (j = 0; j < coaster.length; j += 1) {
+            newcoaster[i][j] = coaster[(coaster.length - j) - 1 ][i] 
+        }
+
+    }
+
+    return newcoaster
+
+}
+
+console.log(rotateCoaster(coasters[0]))
+console.log(coasters[0])
 
 let allCoasters = [
     0,
@@ -123,18 +145,34 @@ function shuffle(array) {
     // https://stackoverflow.com/a/2450976
 }
 
-let shuffleCoasters = function(coastersArray){
+function randomInt(max){
+    return Math.floor(max * Math.random())
+}
+
+let shuffleCoasters = function (coastersArray) {
 
     let shuffledCoasters = shuffle(coastersArray)
 
-    
-    return shuffledCoasters.slice(0,9)
+    let selectedCoasters = shuffledCoasters.slice(0, 9)
+
+    let rotatedSelectedAndShuffledCoasters = []
+
+    for( let coaster of selectedCoasters) {
+        let rotatingCoaster = coasters[coaster]
+        for(i=0; i<= randomInt(4); i+=1){
+            rotatingCoaster = rotateCoaster(rotatingCoaster)
+        }
+        
+        rotatedSelectedAndShuffledCoasters.push(rotatingCoaster)
+    }
+
+    return rotatedSelectedAndShuffledCoasters
 
 }
 
 
 
-let renderBoard = function(coastersArray){
+let renderBoard = function (coastersArray) {
 
 
 
@@ -142,16 +180,16 @@ let renderBoard = function(coastersArray){
     board.classList.add("board")
 
 
-    if (coastersArray.length === 9){
-        for(i=0; i<3; i+=1){
+    if (coastersArray.length === 9) {
+        for (i = 0; i < 3; i += 1) {
             let boardRow = document.createElement("div")
             boardRow.classList.add("boardRow")
 
-            for(j=0;j<3;j+=1){
-                let coasterIndex = coastersArray[j*3+i%3]
-               boardRow.append(buildCoaster(coasters[coasterIndex]))
+            for (j = 0; j < 3; j += 1) {
+                let coasterElement = coastersArray[j * 3 + i % 3]
+                boardRow.append(buildCoaster(coasterElement))
             }
-            
+
             board.append(boardRow)
         }
     }
@@ -160,6 +198,12 @@ let renderBoard = function(coastersArray){
 
 }
 
+// document.body.append(buildCoaster(rotateCoaster(coasters[6])))
+// document.body.append(buildCoaster(coasters[6]))
 
 
 document.body.append(renderBoard(shuffleCoasters(allCoasters)))
+
+
+// for(let i= 0; i<allCoasters.length;i+=1){
+//     document.body.append(buildCoaster(coasters[allCoasters[i]]))}
