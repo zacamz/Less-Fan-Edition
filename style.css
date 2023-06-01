@@ -10,11 +10,12 @@
     display: flex;
 }
 
-.row{}
+
 .coaster{
     flex-direction: column;
     height: 30rem;
-    width:30rem
+    width:30rem ;
+    border: solid white 5px;
 }
 
 .space{
@@ -31,4 +32,14 @@
 
 .dummy{
     visibility: hidden;
+}
+
+.board{
+    display: flex;
+    flex-direction: column;
+}
+
+.boardRow{
+    display: flex;
+    flex-direction: row;
 }
