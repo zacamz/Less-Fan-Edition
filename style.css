@@ -20,6 +20,9 @@
 
 .space{
     background-color: gainsboro;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .notWall{

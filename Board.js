@@ -62,11 +62,13 @@ let coasters =
     ["D", "U", "D", "U", "D"]],]
 
 
-let buildCoaster = function (coaster) {
+let buildCoaster = function (coaster, coasterX = 0, coasterY = 0 ) {
 
     let assembledCoaster = document.createElement("div")
 
     assembledCoaster.classList.add("coaster")
+
+    let overallspaceIndex = 0
 
     for (const [rowIndex, row] of coaster.entries()) {
 
@@ -78,6 +80,13 @@ let buildCoaster = function (coaster) {
         for (const [spotIndex, spot] of row.entries()) {
 
             let spotHTML = document.createElement("div")
+
+            if (spot === "S"){
+                
+                spotHTML.dataset.spotBoardX = (coasterX * 2)+(overallspaceIndex % 2) 
+                spotHTML.dataset.spotBoardY = (coasterY * 2)+Math.floor(overallspaceIndex / 2)
+                overallspaceIndex += 1
+            }
 
             spotHTML.classList.add(legend[spot], "spot", (spotIndex % 2) ? "odd" : "even")
 
@@ -184,10 +193,16 @@ let renderBoard = function (coastersArray) {
         for (i = 0; i < 3; i += 1) {
             let boardRow = document.createElement("div")
             boardRow.classList.add("boardRow")
+            
 
             for (j = 0; j < 3; j += 1) {
                 let coasterElement = coastersArray[j * 3 + i % 3]
-                boardRow.append(buildCoaster(coasterElement))
+                let renderedCoaster = buildCoaster(coasterElement,j,i)
+
+                renderedCoaster.dataset.boardRow = i
+                renderedCoaster.dataset.boardColumn = j
+                boardRow.append(renderedCoaster)
+
             }
 
             board.append(boardRow)
