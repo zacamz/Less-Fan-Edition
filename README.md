@@ -80,7 +80,8 @@ D,U,D,U,D
 
 Need to figure out a way to rotate a 2D array and have the code still be valid however it turns. https://www.codewars.com/kata/525a566985a9a47bc8000670
 
-Update 6/2/2023
+## Update 6/2/2023
+
 
 We have successfully rendered the board in the Board.js File and it includes logic for creating a randomized 3 X 3 board with rotated Pieces.
 
@@ -88,7 +89,7 @@ Moving forward we will start developing the Logic in the Game.js file.
 
 Rules for the Game are as Follows:
 
-Objective: 
+### Objective: 
 Each Player starts with four wooden circles on a coaster on the corner of the game board. 
 
 The Objective of the Game is to move all of your pieces to the opposing corner coaster on the diagonal of the boarder. 
@@ -99,7 +100,7 @@ and their Objective is the same as yours. to get their four pieces onto your sta
 
 You want to do this in as few of moves as possible. 
 
-Moving:
+### Moving:
 
 Each Player has a turn. The Lighter pieces goes first. Each Turn has a total of 3 moves. 
 
@@ -116,7 +117,7 @@ you can even jump over a double wall but that is considered 3 moves.
 
 
 
-Working with Coordinates:
+### Working with Coordinates:
 
 We have assigned each "spot" with a x an y which is passing through the coaster cordinate on the board. 
 
@@ -152,7 +153,7 @@ Starting Postions:
 
 
 
-Moving Function:
+### Moving Function:
 
 We are going to have to build a function that takes in the current loacation of the piece and then the location the player wants to move that piece.
 
