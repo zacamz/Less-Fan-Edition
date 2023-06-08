@@ -1,6 +1,7 @@
 # Less-Fan-Edition
 
 ![Less](./READMEIMGS/Screenshot%202023-06-02%20151144.png)
+
 Our Attempt at making a digital version of the hot new sensation Less the Board Game. Same Confusing Title Less Effective Gameplay!
 
 Board -ems
@@ -82,7 +83,6 @@ Need to figure out a way to rotate a 2D array and have the code still be valid h
 
 ## Update 6/2/2023
 
-
 We have successfully rendered the board in the Board.js File and it includes logic for creating a randomized 3 X 3 board with rotated Pieces.
 
 Moving forward we will start developing the Logic in the Game.js file.
@@ -90,6 +90,7 @@ Moving forward we will start developing the Logic in the Game.js file.
 Rules for the Game are as Follows:
 
 ### Objective: 
+
 Each Player starts with four wooden circles on a coaster on the corner of the game board. 
 
 The Objective of the Game is to move all of your pieces to the opposing corner coaster on the diagonal of the boarder. 
@@ -113,9 +114,6 @@ you can jump over any piece as long as you don't jump over more one piece or a p
 you can jump over a wall but that is considered two moves.
 
 you can even jump over a double wall but that is considered 3 moves. 
-
-
-
 
 ### Working with Coordinates:
 
@@ -149,15 +147,11 @@ Starting Postions:
 4,4 4,5
 5,4 5,5
 
-
-
-
-
 ### Moving Function:
 
 We are going to have to build a function that takes in the current loacation of the piece and then the location the player wants to move that piece.
 
-It will check to make sure there is a piece that starting location and that there is not a piece in the chosen location.
+It will check to make sure there is a piece at the starting location and that there is not a piece in the chosen location.
 
 also making sure that the move doesn't cross two pieces or a piece and a wall
 
@@ -168,5 +162,14 @@ It will check to that the move is horizontal or vertical.
 also if it crosses any walls that it subtracts the correct amount of points or that there are enough points left to jump a wall. 
 
 then adds the total number of moves to the players total for the game. 
+
+
+# BackEnd
+
+We are going to have to code a client.js file that handles when the players make moves and validates them. 
+
+if they are good then it sends a post message to the server.js file that is running on the server side and also validates the move.
+
+which sends a message to both clients to update their side. 
 
 
