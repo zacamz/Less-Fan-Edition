@@ -67,7 +67,7 @@ let coasters =
     ["D", "U", "D", "U", "D"]],]
 
 
-let buildCoaster = function (coaster, coasterX = 0, coasterY = 0 ) {
+let buildCoaster = function (coaster, coasterX = 0, coasterY = 0) {
 
     let assembledCoaster = document.createElement("div")
 
@@ -86,10 +86,10 @@ let buildCoaster = function (coaster, coasterX = 0, coasterY = 0 ) {
 
             let spotHTML = document.createElement("div")
 
-            if (spot === "S"){
-                
-                spotHTML.dataset.spotBoardX = (coasterX * 2)+(overallspaceIndex % 2) 
-                spotHTML.dataset.spotBoardY = (coasterY * 2)+Math.floor(overallspaceIndex / 2)
+            if (spot === "S") {
+
+                spotHTML.dataset.spotBoardX = (coasterX * 2) + (overallspaceIndex % 2)
+                spotHTML.dataset.spotBoardY = (coasterY * 2) + Math.floor(overallspaceIndex / 2)
                 overallspaceIndex += 1
             }
 
@@ -117,7 +117,7 @@ function rotateCoaster(coaster) {
     for (i = 0; i < coaster.length; i += 1) {
 
         for (j = 0; j < coaster.length; j += 1) {
-            newcoaster[i][j] = coaster[(coaster.length - j) - 1 ][i] 
+            newcoaster[i][j] = coaster[(coaster.length - j) - 1][i]
         }
 
     }
@@ -159,7 +159,7 @@ function shuffle(array) {
     // https://stackoverflow.com/a/2450976
 }
 
-function randomInt(max){
+function randomInt(max) {
     return Math.floor(max * Math.random())
 }
 
@@ -167,16 +167,16 @@ let shuffleCoasters = function (coastersArray) {
 
     let shuffledCoasters = shuffle(coastersArray)
 
-    let selectedCoasters = shuffledCoasters.slice(0, BOARD_LENGTH*BOARD_WIDTH)
+    let selectedCoasters = shuffledCoasters.slice(0, BOARD_LENGTH * BOARD_WIDTH)
 
     let rotatedSelectedAndShuffledCoasters = []
 
-    for( let coaster of selectedCoasters) {
+    for (let coaster of selectedCoasters) {
         let rotatingCoaster = coasters[coaster]
-        for(i=0; i<= randomInt(4); i+=1){
+        for (i = 0; i <= randomInt(4); i += 1) {
             rotatingCoaster = rotateCoaster(rotatingCoaster)
         }
-        
+
         rotatedSelectedAndShuffledCoasters.push(rotatingCoaster)
     }
 
@@ -194,15 +194,15 @@ let renderBoard = function (coastersArray) {
     board.classList.add("board")
 
 
-    if (coastersArray.length === BOARD_LENGTH*BOARD_WIDTH) {
+    if (coastersArray.length === BOARD_LENGTH * BOARD_WIDTH) {
         for (i = 0; i < BOARD_LENGTH; i += 1) {
             let boardRow = document.createElement("div")
             boardRow.classList.add("boardRow")
-            
+
 
             for (j = 0; j < BOARD_WIDTH; j += 1) {
                 let coasterElement = coastersArray[j * BOARD_LENGTH + i % BOARD_WIDTH]
-                let renderedCoaster = buildCoaster(coasterElement,j,i)
+                let renderedCoaster = buildCoaster(coasterElement, j, i)
 
                 renderedCoaster.dataset.boardRow = i
                 renderedCoaster.dataset.boardColumn = j
@@ -226,21 +226,21 @@ jsboard = (shuffleCoasters(allCoasters))
 
 document.body.append(renderBoard(jsboard))
 
-function flattenJSBoard (boardforJS){
+function flattenJSBoard(boardforJS) {
     let thisIsFinal = []
 
-    for(let i = 0; i < BOARD_LENGTH*5; i+=1){
+    for (let i = 0; i < BOARD_LENGTH * 5; i += 1) {
         let currentrow = []
-        
-            for(let j = 0; j < BOARD_WIDTH *5; j+=1){
-                let currentCoaster = boardforJS[Math.floor(j/5)+(Math.floor(i/5)*BOARD_WIDTH)]
-                let currentCoasterRow = currentCoaster[Math.floor(i/5)]
-                let currentCoasterCell = currentCoasterRow[j%5]
-                
-                console.log(currentCoasterCell)
-                currentrow.push(currentCoasterCell)
 
-            }
+        for (let j = 0; j < BOARD_WIDTH * 5; j += 1) {
+            let currentCoaster = boardforJS[Math.floor(i / 5) + (Math.floor(j / 5) * BOARD_WIDTH)]
+            let currentCoasterRow = currentCoaster[Math.floor(i % 5)]
+            let currentCoasterCell = currentCoasterRow[j % 5]
+
+            console.log(j % 5)
+            currentrow.push(currentCoasterCell)
+
+        }
 
         thisIsFinal.push(currentrow)
     }
@@ -248,6 +248,44 @@ function flattenJSBoard (boardforJS){
     return thisIsFinal
 }
 
+function renderJSBoard(jsboard) {
+
+
+
+
+    let board = document.createElement("div")
+    // board.classList.add("board")
+
+
+
+    for (i = 0; i < 15; i += 1) {
+        let boardRow = document.createElement("div")
+
+
+
+        for (j = 0; j < 15; j += 1) {
+            let coasterElement = jsboard[i][j]
+            let square = document.createElement("div")
+            square.style.width = "20px"
+            square.style.height = "20px"
+            square.style.display = "inline-block"
+
+            square.classList.add(legend[coasterElement])
+            boardRow.append(square)
+
+        }
+
+        board.append(boardRow)
+    }
+
+
+    return board
+
+
+
+}
+
+document.body.append(renderJSBoard(flattenJSBoard(jsboard)))
 console.log(jsboard)
 console.log(flattenJSBoard(jsboard))
 

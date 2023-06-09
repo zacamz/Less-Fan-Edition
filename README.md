@@ -149,19 +149,22 @@ Starting Postions:
 
 ### Moving Function:
 
+Is the piece they are moving their own. 
+
 We are going to have to build a function that takes in the current loacation of the piece and then the location the player wants to move that piece.
 
 It will check to make sure there is a piece at the starting location and that there is not a piece in the chosen location.
 
 also making sure that the move doesn't cross two pieces or a piece and a wall
 
-that the piece or jumps to an adjacent spot or over one piece to a valid spot.
-
 It will check to that the move is horizontal or vertical. 
 
 also if it crosses any walls that it subtracts the correct amount of points or that there are enough points left to jump a wall. 
 
 then adds the total number of moves to the players total for the game. 
+
+Everytime a Piece moves the X or Y will increase but 1 or 2:
+    if they increases by more then 2 or if the spot they are crossing doesn't have a child element or they both are changing we know the move is invaild 
 
 
 # BackEnd
@@ -171,5 +174,40 @@ We are going to have to code a client.js file that handles when the players make
 if they are good then it sends a post message to the server.js file that is running on the server side and also validates the move.
 
 which sends a message to both clients to update their side. 
+
+# JavaScript Board Array
+
+jsboard = [
+    [D,W,D,W,D,D,N,D,N,D,D,N,N,D]
+    [N,1,W,1,N,W,]]
+
+
+We are trying to flatten the board into an array that breaks it into the number of rows and combines the columns. 
+
+we want to loop through the first row of each coaster in the top row and continue down. 
+
+[[0, 0-14
+1, 0-14
+2, 0-14
+3, 0-14
+4, 0-14],
+
+![DON't ASK](./READMEIMGS/WEIRD%20FLIPPIN%20I's%20and%20J's.png)
+
+Spent some time really testing the knowledge of how matrix's work and getting kind of stumped but realizing that the human brain recognizes patterns with color far easier then with letters or numbers. who knew. thanks Sam! 
+
+# Further Steps
+
+We are going to create a function that translates Board
+
+fear of wet
+upward.
+fragile.
+not pressure!!!
+
+coordinates into jsboard coordinates and checks to see if a wall is inbetween those coordinates.
+
+like a map!
+
 
 
