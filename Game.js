@@ -45,19 +45,19 @@ function checkIfPieceCanMove(playerColor,currentX,currentY, newX, newY){
     
 }
 
-// function isNumberofMovesValid(startX,startY,endX,endY){
+function isNumberofMovesValid(startX,startY,endX,endY){
 
-//     let validity = true
+    let validity = true
 
-//     let totalX = Math.abs(startX - endX)
-//     let totalY = Math.abs(startY - endY)
+    let totalX = Math.abs(startX - endX)
+    let totalY = Math.abs(startY - endY)
 
-//     if((totalX > 2) || (totalY >2)){
-//         validity = false
-//     }
+    if((totalX > 2) || (totalY >2)){
+        validity = false
+    }
 
-//     return validity
-// }
+    return validity
+}
 
 function isPlayersPiece(startX){}
 
@@ -67,15 +67,16 @@ function isMoveDiagonal(startX,startY,endX,endY){
 
     let totalX = Math.abs(startX - endX)
     let totalY = Math.abs(startY - endY)
-
+    
     if((totalX > 0) && (totalY > 0)){
         diagonal = true
     }
-
+    
     return diagonal
 }
 
 function doesSpotContainPiece(x,y){
+    console.log(x+ " and " +y)
     let spot = document.querySelector(`[data-spot-board-x='${x}'][data-spot-board-y='${y}']`)
     if( spot.classList.contains("piece")) {
         return true
@@ -86,14 +87,47 @@ function doesSpotContainPiece(x,y){
 
 
 function doesPieceCrossAnotherPiece(startX,startY,endX,endY){
+    
+    
+    if (startX===endX){
+        
+        let totalY = Math.abs(startY - endY)
+        
+        let direction = startY>endY ? -1 : 1   
+        for (let index = 1; index < totalY; index+= 1) {
+            if(doesSpotContainPiece(startX,startY+(index*direction))){
+                return true
+            }
+        }
+    }
+    if (startY===endY){
+        
+        let totalX = Math.abs(startX - endX)
+        
+        let direction = startX>endX ? -1 : 1   
+        for (let index = 1; index < totalX; index+= 1) {
+            if(doesSpotContainPiece(startX+(index*direction),startY)){
+                return true
+            }
+        }
+
+    }
+
+    return false
+
+}
+function doesPieceCrossWallsProbably(startX,startY,endX,endY){
 
 
 }
 
-function doesPieceCrossWall(startX,startY,endX,endY){
+// function spaceToBoardCoords(x,y){
+//     return {
+//         x: ((Math.floor(x/2)*5)+1)+(((x%2)*2)+1),
+//         y: ((Math.floor(y/2)*5)+1)+(((y%2)*2)+1)
+//     }
+// }
 
 
-}
-
-
-console.log(doesSpotContainPiece(3,5))
+// console.log(spaceToBoardCoords(0,0))
+// console.log(spaceToBoardCoords(1,1))

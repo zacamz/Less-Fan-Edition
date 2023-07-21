@@ -209,5 +209,53 @@ coordinates into jsboard coordinates and checks to see if a wall is inbetween th
 
 like a map!
 
+also a function 
+
+
+# Potentional Rewrite
+
+Moving to to OOP would be ZER0 math which really means way less. Huge advantage for Zach.
+
+Less damage to Sam. The Math Man.
+
+What would this Entail???
+
+SWOT Analysis!!!!
+
+Strengths:
+Less Math
+Less error prone
+More Scaleable 
+More Extensible (?)
+Better Code
+
+Weaknesses:
+Rewrite code.
+HASKAL LACKies
+
+Opportunites:
+Everything
+Flex some OOP on the Old Resume
+reduce bloat
+
+Threats:
+Longer time to develop
+Lost Memeories of the Good Old Days of Flattened JS Board
+GETTING SUED FOR STEALING LESS
+FUNCTIONAL PROGRAMMERS NOT BEING ABLE TO FUNCTION
+
+I am Pretty Sold..
+
+# What would this Rewrite Entail???
+
+We would need:
+
+Board and Coaster Objects
+
+Instead of using math each coaster would store it's own data in the object
+
+and the board object would store the location of each coaster.
+
+
 
 

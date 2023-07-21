@@ -237,7 +237,7 @@ function flattenJSBoard(boardforJS) {
             let currentCoasterRow = currentCoaster[Math.floor(i % 5)]
             let currentCoasterCell = currentCoasterRow[j % 5]
 
-            console.log(j % 5)
+            
             currentrow.push(currentCoasterCell)
 
         }

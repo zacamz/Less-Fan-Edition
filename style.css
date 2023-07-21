@@ -23,14 +23,14 @@
 }
 
 .space{
-    background-color: gainsboro;
+    background-color: rgb(239, 235, 235);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .notWall{
-    background-color: gray;
+    background-color: rgb(203, 200, 200);
 }
 
 .wall{
