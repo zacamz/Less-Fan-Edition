@@ -116,7 +116,9 @@ function doesPieceCrossAnotherPiece(startX,startY,endX,endY){
     return false
 
 }
-function doesPieceCrossWallsProbably(startX,startY,endX,endY){
+
+
+function doesPieceCrossWall(startX,startY,endX,endY){
 
 
 }

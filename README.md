@@ -256,6 +256,12 @@ Instead of using math each coaster would store it's own data in the object
 
 and the board object would store the location of each coaster.
 
+# Decision to not Rewrite!!!!
 
+We came to the conclusion that we could get away with just using the Class in CSS to determine the walls. 
+
+We could revisit this once we get the server side running
+
+Coding is fun.
 
 
