@@ -27,6 +27,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
+}
+
+.highlight1{
+    outline:solid limegreen 10px
+}
+.highlight2{
+    outline:solid yellow 10px
+}
+.highlight3{
+    outline:dotted yellow 10px
 }
 
 .notWall{

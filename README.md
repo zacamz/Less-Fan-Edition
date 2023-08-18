@@ -264,4 +264,57 @@ We could revisit this once we get the server side running
 
 Coding is fun.
 
+## Update 8/18/2023
 
+We are making a Game called Less. its not ours but its ours.
+
+We need the board rendered
+
+    the board is set by spots 
+
+    the walls are randomly generated and rotated
+
+    the grid is laid out
+
+we need the pieces to move
+
+    we need to validate the moves of a selected piece
+
+    we need to allow the player to pick which piece is moving where
+
+    we need to render that move to the board
+
+we need to communicate those moves to the other player
+
+    set up http routes for the game
+
+    save those moves to variables
+
+    then display those changes to the players
+
+
+Possible Moves Schema:
+][
+    {
+        x: int,
+        y: int,
+        cost: int,
+    },
+]
+
+No matter the index of Infinite, even if it is 5, Sam is a genius.
+
+the possible moves function was created to validate movement on the board given cordinates. in that sentence it doesn't sound as cool but it really is pretty maricalious. 
+
+The validation is based off of the classes of the individual spots on the board. 
+
+Since the first time I learned about while loops, this is the first application that I have seen them used and preferred. 
+
+The coolest thing was using the generator function and used [Sams Gist post to make that happen][https://gist.github.com/kemptosa/bb1d73c8141ba9514d5ceefe4ab14478]
+
+this is how you use the generator function to highlight the possible moves
+
+``` 
+for(let move of getMoves(1,1,3)){getSpot(move.x,move.y).classList.add(`highlight${move.cost}`)}
+
+```

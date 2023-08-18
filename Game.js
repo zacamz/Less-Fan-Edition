@@ -24,16 +24,16 @@ function renderPiece(colorOfPiece,coasterX,coasterY){
    spot.classList.add(colorOfPiece)
    
 }
-
-renderPiece("red",5,5)
-renderPiece("red",4,5)
-renderPiece("red",4,4)
-renderPiece("red",5,4)
-
-renderPiece("blue",0,0)
-renderPiece("blue",0,1)
-renderPiece("blue",1,0)
 renderPiece("blue",1,1)
+renderPiece("blue",3,1)
+renderPiece("blue",1,3)
+renderPiece("blue",3,3)
+
+renderPiece("red",11,11)
+renderPiece("red",13,11)
+renderPiece("red",11,13)
+renderPiece("red",13,13)
+
 
 function checkIfPieceCanMove(playerColor,currentX,currentY, newX, newY){
     let canMove = Boolean
@@ -46,7 +46,7 @@ function checkIfPieceCanMove(playerColor,currentX,currentY, newX, newY){
 }
 
 function isNumberofMovesValid(startX,startY,endX,endY){
-
+    
     let validity = true
 
     let totalX = Math.abs(startX - endX)
@@ -76,7 +76,7 @@ function isMoveDiagonal(startX,startY,endX,endY){
 }
 
 function doesSpotContainPiece(x,y){
-    console.log(x+ " and " +y)
+    // console.log(x+ " and " +y)
     let spot = document.querySelector(`[data-spot-board-x='${x}'][data-spot-board-y='${y}']`)
     if( spot.classList.contains("piece")) {
         return true
@@ -84,6 +84,26 @@ function doesSpotContainPiece(x,y){
         return false
     }
 }
+
+function isThisASpace(x,y){
+    // console.log(x+ " and " +y)
+    let spot = document.querySelector(`[data-spot-board-x='${x}'][data-spot-board-y='${y}']`)
+    if( spot.classList.contains("space")) {
+        return true
+    }else{
+        return false
+    }
+}
+function isThisAWall(x,y){
+    // console.log(x+ " and " +y)
+    let spot = document.querySelector(`[data-spot-board-x='${x}'][data-spot-board-y='${y}']`)
+    if( spot.classList.contains("wall")) {
+        return true
+    }else{
+        return false
+    }
+}
+
 
 
 function doesPieceCrossAnotherPiece(startX,startY,endX,endY){
@@ -118,10 +138,78 @@ function doesPieceCrossAnotherPiece(startX,startY,endX,endY){
 }
 
 
-function doesPieceCrossWall(startX,startY,endX,endY){
-
+function isOnBoard(x,y){
+    let spot = document.querySelector(`[data-spot-board-x='${x}'][data-spot-board-y='${y}']`)
+    return !!spot
+}
+function getSpot(x,y){
+    let spot = document.querySelector(`[data-spot-board-x='${x}'][data-spot-board-y='${y}']`)
+    
+    return spot
 
 }
+
+
+function* possibleMoves(x,y,dx,dy, moves){
+
+    let currentCost = 0
+
+    
+    let cx = x
+    let cy = y 
+    
+    let passedWall= false
+    let passedPiece = false
+    
+    while(moves > currentCost){
+
+        
+        
+        cx += dx
+        cy += dy        
+        
+        if(!isOnBoard(cx,cy)){
+            break
+        }
+
+        let currentlyOnWall = isThisAWall(cx,cy)
+        if(currentlyOnWall === true){
+            currentCost += 1
+            passedWall = true
+        }
+        let currentlyHasPiece = doesSpotContainPiece(cx,cy)
+        if(currentlyHasPiece === true){
+            if(passedWall||passedPiece){
+                break
+            }
+        } else if(isThisASpace(cx,cy)){
+            currentCost += 1
+            passedPiece = false
+            passedWall = false
+            
+            yield( {
+                 x: cx,
+                 y: cy,
+     
+                 cost: currentCost 
+             }
+            )
+        }
+
+        
+    }
+    
+
+}
+
+
+function* getMoves(x,y,moves){
+    yield* possibleMoves(x,y,0,1,moves)
+    yield* possibleMoves(x,y,0,-1,moves)
+    yield* possibleMoves(x,y,1,0,moves)
+    yield* possibleMoves(x,y,-1,0,moves)
+}
+
 
 // function spaceToBoardCoords(x,y){
 //     return {

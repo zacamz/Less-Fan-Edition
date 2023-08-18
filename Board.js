@@ -86,12 +86,13 @@ let buildCoaster = function (coaster, coasterX = 0, coasterY = 0) {
 
             let spotHTML = document.createElement("div")
 
-            if (spot === "S") {
 
-                spotHTML.dataset.spotBoardX = (coasterX * 2) + (overallspaceIndex % 2)
-                spotHTML.dataset.spotBoardY = (coasterY * 2) + Math.floor(overallspaceIndex / 2)
-                overallspaceIndex += 1
-            }
+
+            spotHTML.dataset.spotBoardX = (coasterX * 5) + (overallspaceIndex % 5)
+            spotHTML.dataset.spotBoardY = (coasterY * 5) + Math.floor(overallspaceIndex / 5)
+            overallspaceIndex += 1
+            
+            console.log(overallspaceIndex)
 
             spotHTML.classList.add(legend[spot], "spot", (spotIndex % 2) ? "odd" : "even")
 
@@ -237,7 +238,7 @@ function flattenJSBoard(boardforJS) {
             let currentCoasterRow = currentCoaster[Math.floor(i % 5)]
             let currentCoasterCell = currentCoasterRow[j % 5]
 
-            
+
             currentrow.push(currentCoasterCell)
 
         }
