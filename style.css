@@ -1,0 +1,63 @@
+.body{
+    background-color: black;
+}
+
+.even{
+    flex: 1 0 0;
+}
+
+.odd{
+    flex: 10 0 0;
+}
+
+.coaster, .row {
+    display: flex;
+}
+
+
+.coaster{
+    flex-direction: column;
+    height: 30rem;
+    width:30rem ;
+    border: solid white 5px;
+}
+
+.space{
+    background-color: rgb(239, 235, 235);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.highlight1{
+    outline:solid limegreen 10px
+}
+.highlight2{
+    outline:solid yellow 10px
+}
+.highlight3{
+    outline:dotted yellow 10px
+}
+
+.notWall{
+    background-color: rgb(203, 200, 200);
+}
+
+.wall{
+    background-color: rgb(255, 76, 106);
+}
+
+.dummy{
+    visibility: hidden;
+}
+
+.board{
+    display: flex;
+    flex-direction: column;
+}
+
+.boardRow{
+    display: flex;
+    flex-direction: row;
+}
