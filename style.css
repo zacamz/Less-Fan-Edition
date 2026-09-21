@@ -60,7 +60,7 @@ body.game-over-red {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding: 1rem 1rem 2rem;
+    padding: 3.5rem 1rem 2rem;
 }
 
 .game-hud {
@@ -203,24 +203,48 @@ body.game-over-red {
     pointer-events: none;
 }
 
-.space.blue {
-    outline: 2px solid var(--blue);
-}
-
-.space.red {
-    outline: 2px solid var(--red);
-}
-
-.highlight1 {
-    outline: solid limegreen 4px;
-}
-
-.highlight2 {
-    outline: solid yellow 4px;
-}
-
+.highlight1,
+.highlight2,
 .highlight3 {
-    outline: dotted yellow 4px;
+    outline: none;
+}
+
+.highlight1::after,
+.highlight2::after,
+.highlight3::after {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 58%;
+    height: 58%;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: clamp(0.85rem, 2.2vw, 1.35rem);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 3;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.highlight1::after {
+    content: "1";
+    color: #0d3d12;
+    background: #8dff8a;
+}
+
+.highlight2::after {
+    content: "2";
+    color: #4a3b00;
+    background: #ffe566;
+}
+
+.highlight3::after {
+    content: "3";
+    color: #4a2800;
+    background: #ffb347;
 }
 
 .notWall {
@@ -228,7 +252,8 @@ body.game-over-red {
 }
 
 .wall {
-    background-color: rgb(255, 76, 106);
+    background-color: #d4a017;
+    box-shadow: inset 0 0 0 2px #5c4300;
 }
 
 .dummy {
