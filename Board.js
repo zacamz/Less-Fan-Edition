@@ -91,8 +91,6 @@ let buildCoaster = function (coaster, coasterX = 0, coasterY = 0) {
             spotHTML.dataset.spotBoardX = (coasterX * 5) + (overallspaceIndex % 5)
             spotHTML.dataset.spotBoardY = (coasterY * 5) + Math.floor(overallspaceIndex / 5)
             overallspaceIndex += 1
-            
-            console.log(overallspaceIndex)
 
             spotHTML.classList.add(legend[spot], "spot", (spotIndex % 2) ? "odd" : "even")
 
@@ -126,9 +124,6 @@ function rotateCoaster(coaster) {
     return newcoaster
 
 }
-
-console.log(rotateCoaster(coasters[0]))
-console.log(coasters[0])
 
 let allCoasters = [
     0,
@@ -219,77 +214,10 @@ let renderBoard = function (coastersArray) {
 
 }
 
-// document.body.append(buildCoaster(rotateCoaster(coasters[6])))
-// document.body.append(buildCoaster(coasters[6]))
-
-
-jsboard = (shuffleCoasters(allCoasters))
-
-document.body.append(renderBoard(jsboard))
-
-function flattenJSBoard(boardforJS) {
-    let thisIsFinal = []
-
-    for (let i = 0; i < BOARD_LENGTH * 5; i += 1) {
-        let currentrow = []
-
-        for (let j = 0; j < BOARD_WIDTH * 5; j += 1) {
-            let currentCoaster = boardforJS[Math.floor(i / 5) + (Math.floor(j / 5) * BOARD_WIDTH)]
-            let currentCoasterRow = currentCoaster[Math.floor(i % 5)]
-            let currentCoasterCell = currentCoasterRow[j % 5]
-
-
-            currentrow.push(currentCoasterCell)
-
-        }
-
-        thisIsFinal.push(currentrow)
-    }
-
-    return thisIsFinal
+function mountBoard(container) {
+    if (!container) return
+    container.replaceChildren()
+    const jsboard = shuffleCoasters(allCoasters.slice())
+    container.append(renderBoard(jsboard))
+    return jsboard
 }
-
-function renderJSBoard(jsboard) {
-
-
-
-
-    let board = document.createElement("div")
-    // board.classList.add("board")
-
-
-
-    for (i = 0; i < 15; i += 1) {
-        let boardRow = document.createElement("div")
-
-
-
-        for (j = 0; j < 15; j += 1) {
-            let coasterElement = jsboard[i][j]
-            let square = document.createElement("div")
-            square.style.width = "20px"
-            square.style.height = "20px"
-            square.style.display = "inline-block"
-
-            square.classList.add(legend[coasterElement])
-            boardRow.append(square)
-
-        }
-
-        board.append(boardRow)
-    }
-
-
-    return board
-
-
-
-}
-
-document.body.append(renderJSBoard(flattenJSBoard(jsboard)))
-console.log(jsboard)
-console.log(flattenJSBoard(jsboard))
-
-
-// for(let i= 0; i<allCoasters.length;i+=1){
-//     document.body.append(buildCoaster(coasters[allCoasters[i]]))}
